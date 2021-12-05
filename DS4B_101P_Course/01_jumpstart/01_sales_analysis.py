@@ -55,14 +55,14 @@ help(pd.read_excel)
 getcwd()
 
 # %%
-bikes_df = pd.read_excel("00_data_raw/bikes.xlsx")
+bikes_df = pd.read_excel("DS4B_101P_Course/00_data_raw/bikes.xlsx")
 bikes_df
 
-bikeshops_df = pd.read_excel("00_data_raw/bikeshops.xlsx")
+bikeshops_df = pd.read_excel("DS4B_101P_Course/00_data_raw/bikeshops.xlsx")
 bikeshops_df
 
 orderlines_df = pd.read_excel(
-    io = "00_data_raw/orderlines.xlsx",
+    io = "DS4B_101P_Course/00_data_raw/orderlines.xlsx",
     converters= {'order.date': str}
 )
 orderlines_df.info()
@@ -237,7 +237,7 @@ bike_orderlines_wrangle_df
 # 6.0 Visualizing a Time Series ----
 
 mkdir("00_data_wrangled")
-
+# Writes dataframe to a binary file. You can then load this file and it gets returned in the exact same format that you saved it in.
 bike_orderlines_wrangle_df.to_pickle("00_data_wrangled/bike_orderlines_wrangled_df.pkl")
 
 df = pd.read_pickle("00_data_wrangled/bike_orderlines_wrangled_df.pkl")
@@ -255,7 +255,7 @@ sales_by_month_df = df[ ['order_date', 'total_price'] ] \
     .set_index('order_date') \
     .resample(rule='MS') \
     .aggregate(np.sum) \
-    .reset_index()
+    .reset_index()   
 
 sales_by_month_df
 
@@ -297,14 +297,14 @@ sales_by_month_cat_2 = df[['category_2', 'order_date', 'total_price']] \
     .groupby('category_2') \
     .resample('W') \
     .agg(func = {'total_price':np.sum}) \
-    .reset_index()
+    .reset_index()    #without this line, the dataframe now has multiidex - multiple index
 
 sales_by_month_cat_2
 
 # Step 2 - Visualize ----
 
 # Simple Plot
-
+# df.pivot() converts a dataframe from long to wide by specifying index, columns, and values
 sales_by_month_cat_2 \
     .pivot(
         index   = 'order_date',
