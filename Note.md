@@ -34,3 +34,22 @@
   - Helps with automation
 - Support databases: Make sure you have added the python driver neede by dialects supported with SQL Alchemy. For example, PostgreSQL uses psycopg2 as the default driver. You'd need to add this in your Conda Environment.
 - The easiest way to learn how to connect to a database is to Google: "sql alchemy connect to postgress"
+- It is a good idea to close a database connection when finished with reading/writing the data. Open connections can reduce the performance of applications
+- Database schema: this is the architechture of your database. It has a name.
+- Extract, Transform, Load steps are great candidates for automation. They are lengthy and chang infrequently (since databases don't typically change that often).
+- Creating package:
+  - my_pandas_extensions: package
+  - database.py: module
+  - __init__.py: initializes a Python package with modules denoted by filenames.
+- In Python, Objects get methods and attributes from the classes that they inherit from.
+- Attributes: The meta-data that exists for an object. Think of the dimensions of a data frame has an attribute called "shape".
+- Pandas & Numpy work together: Pandas adds the data frame and series structure along with methods to work with data. Numpy adds the low-level function to perform the work, like sum, mean, std, log, etc...
+- Numpy uses special data types (eg int64) that extend the Python builtin data types (eg int), which are optimized for memory allocation.
+- Dictionary: In function development, key-word-args (**kwargs) are dictionaries. Dictionaries are used in the df.renames() and df.agg() functions for column renaming and aggregations. 
+- List: commonly used for iteration. In function development, the *args are lists of arguements without keys. 
+- Tuple: immutable list, used in Pandas for storing data frame shape and multi-index column names.
+- Regex:
+  - "term": contains "term"
+  - "^term": starts with "term"
+  - "term$": ends with "term"
+  - (term1)|(term2): matches "term1" or "term2"
